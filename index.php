@@ -1,23 +1,81 @@
-<!DOCTYPE html>
-<html>
+<?php
+include 'config.php';
+if (isset($_COOKIE['username'])) {
+    $username = $_COOKIE['username'];
+    $sql = "SELECT * from users where username = '$username'";
+    $result = $conn->query($sql);
+    $user = $result->fetch_assoc();
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<body>
-    <?php include('menu.php'); ?>
+$sql = "SELECT * from motels";
+$motel = $conn->query($sql);
 
 
+?>
+<?php
+include 'menu.php';
+?>
+
+<style>
+    .card {
+        height: 450px;
+        /* Chiều cao cố định */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card img {
+        height: 250px;
+        /* Cố định chiều cao cho ảnh */
+        object-fit: cover;
+        /* Cắt ảnh nếu cần để phù hợp */
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        /* Tự động kéo dài để lấp đầy khoảng trống */
+    }
+
+    .card-title,
+    .card-text {
+        margin: 0;
+        overflow: hidden;
+        /* Ẩn nội dung tràn */
+        text-overflow: ellipsis;
+        /* Thêm dấu "..." nếu nội dung quá dài */
+        white-space: nowrap;
+        /* Hiển thị một dòng */
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="text-center">Product List</h2>
+    <div class="row">
+        <?php
+        if ($motel->num_rows > 0) {
+            while ($row = $motel->fetch_assoc()) {
+                echo '<div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="' . $row['images'] . '" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">Description of Product 1.</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>';
+            }
+        }
+        ?>
+    </div>
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>
+    <?php include 'footer.php'; ?>
+    </body>
+
+    </html>
