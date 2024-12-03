@@ -22,6 +22,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/MotelProject/config.php";
 
 header("Content-type: application/json");
 session_start();
+date_default_timezone_set("Asia/Ho_Chi_Minh");
 
 if(
     isset($_POST["username"]) &&
@@ -61,7 +62,7 @@ if(
 
     $message = "
         <p>Mã xác thực của bạn là: <b>$otp</b></p>
-        <p>Bạn có 1 phút để xác thực!</p>
+        <p>Mã sẽ hết hạn sau 1 phút!</p>
     ";
 
     mail(
@@ -81,7 +82,7 @@ if(
         "phone" => $_POST["phone"],
         "password" => md5($_POST["password"]),
         "otp" => $otp,
-        "expired" => date("Y-m-d H:i:s a", strtotime("+1 Minutes")),
+        "expired" => date("Y-m-d H:i:s", strtotime("+1 Minutes")),
     ];
 
     echo json_encode([

@@ -1,8 +1,24 @@
 <?php
 
 session_start();
+date_default_timezone_set("Asia/Ho_Chi_Minh");
+
+function dateCompare($str1, $str2){
+    $date1 = new DateTime($str1);
+    $date2 = new DateTime($str2);
+
+    if($date1 == $date2)
+        return 0;
+    else
+        return $date1 < $date2 ? -1 : 1;
+}
 
 if(!isset($_SESSION["registerData"])){
+    header("Location: /404.php");
+    die();
+}
+
+if(dateCompare(date("Y-m-d H:i:s"), $_SESSION["registerData"]["expired"]) >=  0){
     header("Location: /404.php");
     die();
 }
@@ -15,56 +31,70 @@ if(!isset($_SESSION["registerData"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác thực tài khoản</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        p{
+            padding: 10px 0 0 0;
+        }
+        p>a{
+            color: #dc3545;
+        }
+        .wrapper{
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hideWrapper{
+            display: none;
+        }
+        .loader{
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #dc3545;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin{
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 
-<body class="bg-dark">
-    <section class="vh-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6 text-white">
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h3 class="card-title text-center">Verify Email</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="otp" class="form-label">Verify code</label>
+                            <input type="text" class="form-control" id="otp" name="otp" required>
+                        </div>
 
-                    <div class="px-5 ms-xl-4 my-3">
-                        <a class="text-decoration-none text-white me-2" href="index.php">
-                            <img src="image/logo.png" height="30" loading="lazy" /> MotelNine
-                        </a>
-                    </div>
-
-                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-
-                        <form style="width: 23rem;">
-
-                            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Xác thực tài khoản</h3>
-
-                            <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="text" name="otp" id="form2Example18"
-                                    class="form-control form-control-lg" placeholder="Mã xác thực" required />
-                            </div>
-
-                            <div class="pt-1 mb-4">
-                                <button id="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-lg btn-block"
-                                    type="button">Gửi</button>
-                            </div>
-
-                            <p>Đã có tài khoản? <a href="login.php" class="link-info">Đăng nhập</a></p>
-
-                        </form>
-
-                    </div>
-
-                </div>
-                <div class="col-sm-6 px-0 d-none d-sm-block">
-                    <img src="image/register.jpg" alt="Login image" class="w-100 vh-100"
-                        style="object-fit: cover; object-position: left;">
+                        <button id="submit" type="submit" class="btn btn-danger w-100">Verify</button>
+                        <p>Already have an account? <a href="/MotelProject/login.php">Login</a></p>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    </div>
+    
+    <div class="wrapper hideWrapper">
+        <div class="loader"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.querySelector("#submit").addEventListener("click", (e) => {
             e.preventDefault();

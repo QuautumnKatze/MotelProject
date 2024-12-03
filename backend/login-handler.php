@@ -1,6 +1,8 @@
 <?php
 include('../config.php');
 
+session_start();
+
 // Kiểm tra reCAPTCHA
 $recaptchaSecretKey = '6LdMy5AqAAAAACdet8vyGkCChRAceCm52wMma4pv';
 $recaptchaResponse = $_POST['g-recaptcha-response'];
@@ -28,6 +30,8 @@ if ($result->num_rows > 0) {
     // Lưu thông tin người dùng vào cookie
     setcookie('username', $user['username'], time() + (3600), "/");
     setcookie('user_id', $user['id'], time() + (3600), "/");
+
+    unset($_SESSION["registerData"]);
 
     // Chuyển hướng đến trang index
     header("Location: ../index.php");

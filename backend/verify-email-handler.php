@@ -3,6 +3,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/MotelProject/config.php";
 
 header("Content-type: application/json");
 session_start();
+date_default_timezone_set("Asia/Ho_Chi_Minh");
 function dateCompare($str1, $str2){
     $date1 = new DateTime($str1);
     $date2 = new DateTime($str2);
@@ -26,7 +27,7 @@ if(isset($_POST["otp"])){
     
     $registerData = $_SESSION["registerData"];
 
-    if(dateCompare(date("Y-m-d H:i:s a"), $registerData["expired"]) >=  0){
+    if(dateCompare(date("Y-m-d H:i:s"), $registerData["expired"]) >=  0){
         unset($_SESSION["registerData"]);
         echo json_encode([
             "errorRedirect" => "",

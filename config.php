@@ -1,7 +1,12 @@
 <?php
-$servername = "localhost:3066";
+// $servername = "localhost:3066";
+// $username = "root";
+// $password = "";
+// $database = "phongtrodb";
+
+$servername = "localhost:3306";
 $username = "root";
-$password = "";
+$password = "1234";
 $database = "phongtrodb";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
