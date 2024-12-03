@@ -106,6 +106,9 @@ if(dateCompare(date("Y-m-d H:i:s"), $_SESSION["registerData"]["expired"]) >=  0)
                     otp: document.querySelector("[name='otp']").value,
                 },
                 dataType: "json",
+                beforeSend: () => {
+                    document.querySelector(".wrapper").classList.remove("hideWrapper");
+                },
                 success: (data) => {
                     if(data.errorRedirect != ""){
                         window.location.replace(data.errorRedirect);
@@ -115,6 +118,9 @@ if(dateCompare(date("Y-m-d H:i:s"), $_SESSION["registerData"]["expired"]) >=  0)
 
                     if(data.successRedirect != "")
                         window.location.replace(data.successRedirect);
+                },
+                complete: () => {
+                    document.querySelector(".wrapper").classList.add("hideWrapper");
                 },
                 error: (xhr, ajaxOptions, thrownError) => {
                     console.log(xhr.responseText);

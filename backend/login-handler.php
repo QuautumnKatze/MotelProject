@@ -31,7 +31,8 @@ if ($result->num_rows > 0) {
     setcookie('username', $user['username'], time() + (3600), "/");
     setcookie('user_id', $user['id'], time() + (3600), "/");
 
-    unset($_SESSION["registerData"]);
+    if(isset($_SESSION["registerData"]))
+        unset($_SESSION["registerData"]);
 
     // Chuyển hướng đến trang index
     header("Location: ../index.php");
