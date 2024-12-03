@@ -70,7 +70,7 @@ if(!isset($_SESSION["registerData"])){
             e.preventDefault();
 
             $.ajax({
-                url: "/MotelProject/verifyEmailAuth.php",
+                url: "/MotelProject/backend/verify-email-handler.php",
                 type: "post",
                 data: {
                     otp: document.querySelector("[name='otp']").value,

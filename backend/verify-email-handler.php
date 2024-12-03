@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/MotelProject/config.php";
 
 header("Content-type: application/json");
 session_start();

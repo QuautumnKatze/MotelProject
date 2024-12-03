@@ -1,5 +1,5 @@
 <?php 
-include "config.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/MotelProject/config.php";
 
 // Trong tệp php.ini
 // [mail function]
@@ -61,7 +61,7 @@ if(
 
     $message = "
         <p>Mã xác thực của bạn là: <b>$otp</b></p>
-        <p>Bạn có 2 phút để xác thực!</p>
+        <p>Bạn có 1 phút để xác thực!</p>
     ";
 
     mail(
@@ -81,13 +81,13 @@ if(
         "phone" => $_POST["phone"],
         "password" => md5($_POST["password"]),
         "otp" => $otp,
-        "expired" => date("Y-m-d H:i:s a", strtotime("+2 Minutes")),
+        "expired" => date("Y-m-d H:i:s a", strtotime("+1 Minutes")),
     ];
 
     echo json_encode([
         "errorRedirect" => "",
-        "message" => "Chúng tôi đã gửi mã xác thực tới email của bạn, mã hết hạn sau 2 phút!",
-        "successRedirect" => "/MotelProject/verifyEmail.php",
+        "message" => "Chúng tôi đã gửi mã xác thực tới email của bạn, mã hết hạn sau 1 phút!",
+        "successRedirect" => "/MotelProject/verify-email.php",
     ]);
 }
 else
