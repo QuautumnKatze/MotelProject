@@ -36,6 +36,7 @@ if (isset($_COOKIE['username'])) {
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="assets/js/config.js"></script>
 </head>
 
@@ -49,6 +50,12 @@ if (isset($_COOKIE['username'])) {
         </div>
 
         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <div class="navbar-nav align-items-center">
+                <a class="dropdown-item" href="index.php">
+                    <i class="bx bx-home me-2"></i>
+                    <span class="align-middle">Trang chủ</span>
+                </a>
+            </div>
             <!-- Search -->
             <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
@@ -102,7 +109,7 @@ if (isset($_COOKIE['username'])) {
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="profile.php">
+                            <a class="dropdown-item" href="profile.php?">
                                 <i class="bx bx-user me-2"></i>
                                 <span class="align-middle">Trang cá nhân</span>
                             </a>
