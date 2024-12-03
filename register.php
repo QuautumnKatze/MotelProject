@@ -85,7 +85,7 @@
             e.preventDefault();
 
             $.ajax({
-                url: "/MotelProject/registerAuth.php",
+                url: "/MotelProject/backend/register-handler.php",
                 type: "post",
                 data: {
                     username: document.querySelector("[name='username']").value,
