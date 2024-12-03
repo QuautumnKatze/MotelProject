@@ -1,3 +1,13 @@
+<?php
+include('config.php');
+if (isset($_COOKIE['username'])) {
+    $username = $_COOKIE['username'];
+    $sql = "SELECT * from users where username = '$username'";
+    $result = $conn->query($sql);
+    $user = $result->fetch_assoc();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

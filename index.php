@@ -1,21 +1,11 @@
 <?php
-include 'config.php';
-if (isset($_COOKIE['username'])) {
-    $username = $_COOKIE['username'];
-    $sql = "SELECT * from users where username = '$username'";
-    $result = $conn->query($sql);
-    $user = $result->fetch_assoc();
-}
-
-$sql = "SELECT * from motels";
-$motel = $conn->query($sql);
-
-
-?>
-<?php
 include 'menu.php';
 ?>
-
+<?php
+include 'config.php';
+$sql = "SELECT * from motels";
+$motel = $conn->query($sql);
+?>
 <style>
     .card {
         height: 450px;
@@ -60,11 +50,12 @@ include 'menu.php';
             while ($row = $motel->fetch_assoc()) {
                 echo '<div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="' . $row['images'] . '" class="card-img-top" alt="Product 1">
+                    <img src="' . $row['images'] . '" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Product 1</h5>
-                        <p class="card-text">Description of Product 1.</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <h5 class="card-title">' . $row['title'] . '</h5>
+                        <p class="card-text"> Giá: ' . number_format($row['price']) . '<sup>đ</sup>/tháng</p>
+                        <p class="card-text"> Địa chỉ: ' . $row['address'] . '</p>
+                        <a href="motel-detail.php?id=' . $row['id'] . '" class="btn btn-primary">Xem chi tiết</a>
                     </div>
                 </div>
             </div>';
@@ -72,10 +63,11 @@ include 'menu.php';
         }
         ?>
     </div>
+</div>
 
 
 
-    <?php include 'footer.php'; ?>
-    </body>
+<?php include 'footer.php'; ?>
+</body>
 
-    </html>
+</html>
