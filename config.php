@@ -1,13 +1,12 @@
 <?php
-$servername = 'localhost:3066';
-$username = 'root';
-$password = '';
-$database = 'phongtrodb';
+$severname = "localhost:3066";
+$username = "root";
+$password = "";
+$dbname = "phongtrodb";
 
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = mysqli_connect($severname, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    die("Lỗi kết nối thát bại: " . $conn->connect_error);
+    die("Kết nối thất bại" . $connec->connect_error);
 }
-
 ?>
