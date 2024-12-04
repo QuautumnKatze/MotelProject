@@ -14,7 +14,7 @@ if (isset($_COOKIE['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khách sạn</title>
+    <title>Motel</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
@@ -71,7 +71,7 @@ if (isset($_COOKIE['username'])) {
                 <?php
                 if (isset($_COOKIE['username'])) {
                     echo '<li class="nav-item lh-1 me-3">
-                    <a class="dropdown-item" href="my-motel.php?id=' . $user['id'] . ' ">
+                    <a class="dropdown-item" href="my-motel.php">
                         <i class="bx bx-bed me-2"></i>
                         <span class="align-middle">Quản lý phòng trọ</span>
                     </a>

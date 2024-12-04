@@ -37,6 +37,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <p class="card-text">
                     <strong>Địa chỉ:</strong> <?php echo $motel['address']; ?><br>
                     <strong>Giá thuê:</strong> <?php echo number_format($motel['price']); ?> VND<br>
+                    <strong>Diện tích phòng:</strong> <?php echo $motel['area']; ?> m<sup>2</sup><br>
                 </p>
                 <div class="container m-3">
                     <?php echo $motel['description']; ?>

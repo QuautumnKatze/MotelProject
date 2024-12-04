@@ -43,7 +43,7 @@ $motel = $conn->query($sql);
 </style>
 
 <div class="container mt-5">
-    <h2 class="text-center">Product List</h2>
+    <h2 class="text-center">Danh sách phòng trọ</h2>
     <div class="row">
         <?php
         if ($motel->num_rows > 0) {
