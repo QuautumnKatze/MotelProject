@@ -2,7 +2,6 @@
 include '../config.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Nhận dữ liệu từ form
-    $id = $_POST['id'];
     $title = $_POST['title'];
     $price = $_POST['price'];
     $address = $_POST['address'];
@@ -12,14 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $category_id = $_POST['category_id'];
     $district_id = $_POST['district_id'];
     $description = $_POST['description'];
+    $uid = $_COOKIE['user_id'];
 
-    $sql = "UPDATE motels SET title = '$title', price = '$price', address = '$address', images = '$images', phone = '$phone', area = '$area' , category_id = '$category_id', district_id = '$district_id', `description` = '$description' WHERE id = '$id'";
+    $sql = "INSERT INTO `motels`( `title`, `description`, `price`, `area`, `count_view`, `address`, `latlng`, `images`, `user_id`, `category_id`, `district_id`, `ultilities`, `phone`, `approve`) 
+    VALUES ('$title','$description','$price','$area','0','$address','aaaaa','$images','$uid','$category_id','$district_id','1','$phone','1')";
     if ($result = $conn->query($sql) == TRUE) {
-        header("Location: ../my-motel.php?status=success");
+        header("Location: ../my-motel.php?status=success-add");
         exit();
     } else {
-        header("Location: ../my-motel.php?status=error");
+        header("Location: ../my-motel.php?status=error-add");
         exit();
     }
 }
+
 ?>

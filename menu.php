@@ -76,6 +76,12 @@ if (isset($_COOKIE['username'])) {
                         <span class="align-middle">Quản lý phòng trọ</span>
                     </a>
                 </li>';
+                    echo '<li class="nav-item lh-1 me-3">
+                    <a class="dropdown-item" href="create-motel.php">
+                        <i class="bx bx-book me-2"></i>
+                        <span class="align-middle">Đăng phòng trọ</span>
+                    </a>
+                </li>';
                 }
                 ?>
 

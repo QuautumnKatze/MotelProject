@@ -96,6 +96,12 @@ if (isset($_GET['status'])) {
                 case 'error-del':
                     toastr.error('Xóa thất bại!');
                     break;
+                case 'success-add':
+                    toastr.success('Thêm thành công!');
+                    break;
+                case 'error-add':
+                    toastr.error('Thêm thất bại!');
+                    break;
             }
         });
     </script>";

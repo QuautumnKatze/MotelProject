@@ -3,7 +3,7 @@ include 'menu.php';
 ?>
 <?php
 include 'config.php';
-$sql = "SELECT * from motels";
+$sql = "SELECT * from motels where approve = 1";
 $motel = $conn->query($sql);
 ?>
 <style>
@@ -64,8 +64,6 @@ $motel = $conn->query($sql);
         ?>
     </div>
 </div>
-
-
 
 <?php include 'footer.php'; ?>
 </body>

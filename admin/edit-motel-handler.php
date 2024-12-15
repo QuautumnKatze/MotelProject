@@ -12,13 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $category_id = $_POST['category_id'];
     $district_id = $_POST['district_id'];
     $description = $_POST['description'];
+    $uid = $_POST['user_id'];
 
-    $sql = "UPDATE motels SET title = '$title', price = '$price', address = '$address', images = '$images', phone = '$phone', area = '$area' , category_id = '$category_id', district_id = '$district_id', `description` = '$description' WHERE id = '$id'";
+
+    $sql = "UPDATE motels SET title = '$title', user_id = '$uid', price = '$price', address = '$address', images = '$images', phone = '$phone', area = '$area' , category_id = '$category_id', district_id = '$district_id', `description` = '$description' WHERE id = '$id'";
     if ($result = $conn->query($sql) == TRUE) {
-        header("Location: ../my-motel.php?status=success");
+        header("Location: list-motel.php?status=success");
         exit();
     } else {
-        header("Location: ../my-motel.php?status=error");
+        header("Location: list-motel.php?status=error");
         exit();
     }
 }

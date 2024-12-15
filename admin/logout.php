@@ -11,6 +11,6 @@ if (isset($_COOKIE['user_id'])) {
 if (isset($_COOKIE['admin'])) {
     setcookie('user_id', '', time() - 3600, "/"); // Xóa cookie user_id
 }
-header("Location: ../login.php");
+header("Location: login.php");
 exit();
 ?>
