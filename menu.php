@@ -56,15 +56,12 @@ if (isset($_COOKIE['username'])) {
                     <span class="align-middle">Trang chủ</span>
                 </a>
             </div>
-            <!-- Search -->
             <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                    <i class="bx bx-search fs-4 lh-0"></i>
-                    <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                        aria-label="Search..." />
-                </div>
+                <a class="dropdown-item" href="admin/index.php">
+                    <i class="bx bx-diamond me-2"></i>
+                    <span class="align-middle">Trang quản trị</span>
+                </a>
             </div>
-            <!-- /Search -->
 
             <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
@@ -84,6 +81,12 @@ if (isset($_COOKIE['username'])) {
                 </li>';
                 }
                 ?>
+                <li class="nav-item lh-1 me-3">
+                    <a class="dropdown-item" href="contact.php">
+                        <i class="bx bxs-contact me-2"></i>
+                        <span class="align-middle">Liên hệ</span>
+                    </a>
+                </li>
 
                 <?php
                 if (isset($_COOKIE['username'])) {

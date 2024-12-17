@@ -2,8 +2,8 @@
 include '../config.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $oldPassword = md5($_POST['passwordOld']);
-    $newPassword = $_POST['passwordNew'];
-    $confirmPassword = $_POST['passwordConfirm'];
+    $newPassword = md5($_POST['passwordNew']);
+    $confirmPassword = md5($_POST['passwordConfirm']);
 
 
     session_start();

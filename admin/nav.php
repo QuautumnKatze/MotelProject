@@ -7,6 +7,12 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+        <div class="navbar-nav align-items-center">
+            <a class="dropdown-item" href="http://localhost/PhongTro/index.php">
+                <i class="bx bx-home me-2"></i>
+                <span class="align-middle">Trang web</span>
+            </a>
+        </div>
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
@@ -18,6 +24,7 @@
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
+
             <!-- Place this tag where you want the button to render. -->
             <li class="nav-item lh-1 me-3">
                 <a class="github-button" href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -53,9 +60,9 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="http://localhost/PhongTro/profile.php">
                             <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Thông tin tài khoản</span>
                         </a>
                     </li>
                     <li>

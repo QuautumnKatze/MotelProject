@@ -152,9 +152,21 @@ include 'check-login.php';
                 <div data-i18n="Analytics">Quản lý phòng trọ</div>
               </a>
             </li>
+            <li class="menu-item">
+              <a href="list-user.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Quản lý người dùng</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="list-message.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Tin nhắn liên hệ</div>
+              </a>
+            </li>
 
             <!-- Layouts -->
-            <li class="menu-item">
+            <!-- <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Quản lý người dùng</div>
@@ -187,7 +199,7 @@ include 'check-login.php';
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </aside>
         <!-- / Menu -->

@@ -59,9 +59,12 @@ $district = $conn->query($sql);
                                 name="phone" />
                         </div>
                         <div class="mt-2 mb-3">
-                            <label for="largeInput" class="form-label">Địa chỉ trọ</label>
-                            <input id="largeInput" class="form-control form-control-lg" type="text"
-                                placeholder="Địa chỉ" name="address" />
+                            <label for="address" class="form-label">Địa chỉ:</label>
+                            <input type="text" class="form-control form-control-lg" id="address" name="address" required
+                                placeholder="Địa chỉ">
+                            <div id="map" class="my-3" style="width: 100%; height: 500px;"></div>
+                            <button type="button" class="btn btn-success mb-3" id="get-latlng">Get LatLng</button>
+                            <input type="hidden" id="latlng" name="latlng">
                         </div>
                         <div class="mt-2 mb-3">
                             <label for="largeSelect" class="form-label">Danh mục</label>
@@ -110,8 +113,40 @@ $district = $conn->query($sql);
 </div>
 
 
+
 <?php include 'footer.php' ?>
 <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+<script>
+    let map, marker;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 10.762622, lng: 106.660172 }, // Default center
+            zoom: 13,
+        });
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+        });
+    }
+
+    document.getElementById("get-latlng").addEventListener("click", () => {
+        const address = document.getElementById("address").value;
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: address }, (results, status) => {
+            if (status === "OK") {
+                const location = results[0].geometry.location;
+                document.getElementById("latlng").value = `${location.lat()},${location.lng()}`;
+                map.setCenter(location);
+                marker.setPosition(location);
+            } else {
+                alert("Geocoding failed: " + status);
+            }
+        });
+    });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQPU4JXCOc7j-8s6QC8sJ9iF0EOEJ6tv4&callback=initMap" async
+    defer></script>
 <script>
     CKEDITOR.replace('description', {
         height: 200,
