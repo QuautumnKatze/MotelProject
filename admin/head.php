@@ -164,6 +164,12 @@ include 'check-login.php';
                 <div data-i18n="Analytics">Tin nhắn liên hệ</div>
               </a>
             </li>
+            <li class="menu-item">
+              <a href="statistic.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Thống kê</div>
+              </a>
+            </li>
 
             <!-- Layouts -->
             <!-- <li class="menu-item">
