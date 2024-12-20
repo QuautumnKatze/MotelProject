@@ -13,10 +13,11 @@ include('config.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
-        p{
+        p {
             padding: 10px 0 0 0;
         }
-        p>a{
+
+        p>a {
             color: #dc3545;
         }
     </style>
@@ -43,7 +44,7 @@ include('config.php');
                             <div class="g-recaptcha" data-sitekey="6LdMy5AqAAAAAIsDZ-TCeAvliAZ-ftkY9ZUN2WBu"></div>
                         </div>
                         <button type="submit" class="btn btn-danger w-100">Login</button>
-                        <p>Don't have an account? <a href="/MotelProject/register.php">Register</a></p>
+                        <p>Don't have an account? <a href="register.php">Register</a></p>
                     </form>
                 </div>
             </div>

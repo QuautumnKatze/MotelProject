@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
-        p{
+        p {
             padding: 10px 0 0 0;
         }
-        p>a{
+
+        p>a {
             color: #dc3545;
         }
-        .wrapper{
+
+        .wrapper {
             position: fixed;
             z-index: 9999;
             top: 0;
@@ -26,10 +30,12 @@
             align-items: center;
             background: rgba(0, 0, 0, 0.5);
         }
-        .hideWrapper{
+
+        .hideWrapper {
             display: none;
         }
-        .loader{
+
+        .loader {
             border: 16px solid #f3f3f3;
             border-top: 16px solid #dc3545;
             border-radius: 50%;
@@ -37,9 +43,15 @@
             height: 100px;
             animation: spin 1s linear infinite;
         }
-        @keyframes spin{
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -74,17 +86,18 @@
                         </div>
                         <div class="mb-3">
                             <label for="passwordConfirm" class="form-label">Confirm password</label>
-                            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required>
+                            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
+                                required>
                         </div>
 
                         <button id="submit" type="submit" class="btn btn-danger w-100">Regiter</button>
-                        <p>Already have an account? <a href="/MotelProject/login.php">Login</a></p>
+                        <p>Already have an account? <a href="/PhongTro/login.php">Login</a></p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="wrapper hideWrapper">
         <div class="loader"></div>
     </div>
@@ -95,7 +108,7 @@
             e.preventDefault();
 
             $.ajax({
-                url: "/MotelProject/backend/register-handler.php",
+                url: "backend/register-handler.php",
                 type: "post",
                 data: {
                     username: document.querySelector("[name='username']").value,
@@ -110,13 +123,13 @@
                     document.querySelector(".wrapper").classList.remove("hideWrapper");
                 },
                 success: (data) => {
-                    if(data.errorRedirect != ""){
+                    if (data.errorRedirect != "") {
                         window.location.replace(data.errorRedirect);
                         return;
                     }
                     alert(data.message);
-                    
-                    if(data.successRedirect != "")
+
+                    if (data.successRedirect != "")
                         window.location.replace(data.successRedirect);
                 },
                 complete: () => {

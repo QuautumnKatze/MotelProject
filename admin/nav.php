@@ -8,7 +8,7 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <a class="dropdown-item" href="http://localhost/PhongTro/index.php">
+            <a class="dropdown-item" href="../index.php">
                 <i class="bx bx-home me-2"></i>
                 <span class="align-middle">Trang web</span>
             </a>
@@ -60,7 +60,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="http://localhost/PhongTro/profile.php">
+                        <a class="dropdown-item" href="../profile.php">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">Thông tin tài khoản</span>
                         </a>

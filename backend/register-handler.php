@@ -1,5 +1,5 @@
-<?php 
-include $_SERVER["DOCUMENT_ROOT"] . "/MotelProject/config.php";
+<?php
+include $_SERVER["DOCUMENT_ROOT"] . "/PhongTro/config.php";
 
 // Trong tệp php.ini
 // [mail function]
@@ -24,16 +24,16 @@ header("Content-type: application/json");
 session_start();
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
-if(
+if (
     isset($_POST["username"]) &&
     isset($_POST["email"]) &&
     isset($_POST["name"]) &&
     isset($_POST["phone"]) &&
     isset($_POST["password"]) &&
     isset($_POST["passwordConfirm"])
-){
+) {
 
-    if($_POST["password"] != $_POST["passwordConfirm"]){
+    if ($_POST["password"] != $_POST["passwordConfirm"]) {
         echo json_encode([
             "errorRedirect" => "",
             "message" => "Mật khẩu xác thực nhập không trùng khớp!",
@@ -41,13 +41,13 @@ if(
         ]);
         die();
     }
-    
+
     $pre = $conn->prepare("select count(*) as 'count' from users where username = ? or email = ?");
     $pre->bind_param("ss", $_POST["username"], $_POST["email"]);
     $pre->execute();
     $data = $pre->get_result()->fetch_assoc();
 
-    if($data["count"] != 0){
+    if ($data["count"] != 0) {
         echo json_encode([
             "errorRedirect" => "",
             "message" => "Tài khoản hoặc email đã tồn tại!",
@@ -55,9 +55,9 @@ if(
         ]);
         die();
     }
-    
+
     $otp = "";
-    for($i = 1; $i <= 6; $i++)
+    for ($i = 1; $i <= 6; $i++)
         $otp .= rand(0, 9);
 
     $message = "
@@ -88,10 +88,9 @@ if(
     echo json_encode([
         "errorRedirect" => "",
         "message" => "Chúng tôi đã gửi mã xác thực tới email của bạn, mã hết hạn sau 1 phút!",
-        "successRedirect" => "/MotelProject/verify-email.php",
+        "successRedirect" => "/PhongTro/verify-email.php",
     ]);
-}
-else
+} else
     echo json_encode([
         "message" => "Vui lòng điền đầy đủ thông tin!",
     ]);

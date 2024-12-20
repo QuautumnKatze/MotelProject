@@ -1,5 +1,5 @@
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . "/MotelProject/config.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/PhongTro/config.php";
 
 header("Content-type: application/json");
 session_start();
@@ -32,7 +32,7 @@ if(isset($_POST["otp"])){
         echo json_encode([
             "errorRedirect" => "",
             "message" => "Mã đã hết hạn vui lòng đăng ký lại!",
-            "successRedirect" => "/MotelProject/register.php",
+            "successRedirect" => "/PhongTro/register.php",
         ]);
         die();
     }
@@ -78,7 +78,7 @@ if(isset($_POST["otp"])){
     echo json_encode([
         "errorRedirect" => "",
         "message" => "Đăng ký thành công!",
-        "successRedirect" => "/MotelProject/login.php"
+        "successRedirect" => "/PhongTro/login.php"
     ]);
 }
 else
